@@ -6,7 +6,7 @@ Created on Thu Oct  7 12:10:27 2021
 """
 
 import numpy as np
-def pivot_col (a,b):
+def pivot_fila (a,b):
     n=len(a)
     redux=abs(np.array(a))
     orden=[]
@@ -36,8 +36,8 @@ def pivot_col (a,b):
     return(auxr,auxr2)
 
 def Gauss_Seidel_numpy (matriz,resultados):
-    print("Se aplico el método Gauss-Seidel con numpy y se ordenaron por columnas\n")
-    m_np,r_np=pivot_col(matriz,resultados)
+    print("Se aplico el método Gauss-Seidel con numpy y se ordenaron por filas\n")
+    m_np,r_np=pivot_fila(matriz,resultados)
     m_np=np.array(m_np)
     r_np=np.array(r_np)
     x=np.array([0.0 for i in range(len(matriz))])
