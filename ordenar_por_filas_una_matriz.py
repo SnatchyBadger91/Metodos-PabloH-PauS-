@@ -6,7 +6,7 @@ Created on Thu Oct  7 11:28:03 2021
 """
 
 import numpy as np
-def pivot_col (a,b):
+def pivot_fila (a,b):
     
     n=len(a)
     redux=abs(np.array(a))
@@ -41,4 +41,4 @@ def pivot_col (a,b):
     return(auxr,auxr2)
 
     
-pivot_col([[3,8,4],[7,9,7],[2,3,8]],[3,5,6])
+pivot_fila([[3,8,4],[7,9,7],[2,3,8]],[3,5,6])
