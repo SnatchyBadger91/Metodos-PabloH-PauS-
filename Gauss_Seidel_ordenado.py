@@ -35,8 +35,39 @@ def pivot_fila (a,b):
         auxr2.append(b[i])
     return(auxr,auxr2)
 
+def pivot_col (a,b):
+    n=len(a)
+    redux=abs(np.array(a))
+    redux=np.transpose(redux)#Se saca la matriz transpuesta para hacerlo por columnas
+    orden=[]
+    aux=[]
+    for i in range(n):
+        for k in range(n):
+            if redux[k][0]!=0:   
+               aux.append(redux[k][0]/max(redux[k]))
+            if redux[k][0]==0:
+                aux.append(0)
+        q= np.where(aux==max(aux))
+        t = ''.join(map(str, q))
+        t=eval(t)
+        orden.append(t[0]) 
+        aux.clear()
+        redux[q]=0
+        redux=redux.tolist()
+        for k in range(len(redux)):
+            del redux[k][0]
+        redux=np.array(redux)
+    auxr=[]
+    for i in orden:
+        auxr.append(a[i])
+    auxr2=[]
+    for i in orden:
+        auxr2.append(b[i])
+    return(auxr,auxr2)
+
+
 def Gauss_Seidel_numpy (matriz,resultados):
-    print("Se aplico el método Gauss-Seidel con numpy y se ordenaron por filas\n")
+    print("Se aplico el método Gauss-Seidel con numpy\n")
     m_np,r_np=pivot_fila(matriz,resultados)
     m_np=np.array(m_np)
     r_np=np.array(r_np)
