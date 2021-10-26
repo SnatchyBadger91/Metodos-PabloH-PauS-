@@ -40,7 +40,7 @@ def linear(x_sol,A_coef,b_coef,umbral):
     k=.01
     for i in range(100000000):
         x_sol=x_sol-k*gradiante(x_sol,A_coef,b_coef)
-        a=np.dot(A_coef,x_sol)
+        a=producto(A_coef,x_sol)
         if a[0]<(b_coef[0]+umbral) and a[0]>(b_coef[0]-umbral):
             break
         
