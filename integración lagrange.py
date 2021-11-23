@@ -1,12 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Nov 22 10:44:37 2021
-
-@author: thor2
-"""
 import math as mt
 from functools import reduce
 import numpy as np
+import matplotlib.pyplot as plt
 
 def normal_den(x):
 	return (1/mt.sqrt(2*mt.pi))*mt.exp(-0.5*mt.pow(x, 2))
@@ -44,11 +39,24 @@ for i in range(0,len(x_c)-2,2):
     evalmax=((poli[0]*mt.pow(aux_x[2],3)/3)+(poli[1]*mt.pow(aux_x[2],2)/2)+(poli[2]*aux_x[2]))
     integral=evalmax-evalmin
     result+=integral
+
+plt.plot(x_c,y_c)
+for i in range(0,len(x_c)-2,2):
+    aux_x=[x_c[i],x_c[i+1],x_c[i+2]]
+    aux_y=[y_c[i],y_c[i+1],y_c[i+2]]
+    y_eval=[lagrange(aux_x,aux_y,i) for i in aux_x]
+    y_eval_neg=[lagrange(aux_x,aux_y,aux_x[0]-.5)]
+    y_eval_pos=[lagrange(aux_x,aux_y,aux_x[0]+.5)]
+    y_final=y_eval_neg+y_eval+y_eval_pos
+    aux_x_neg=[aux_x[0]-.5]
+    aux_x_pos=[aux_x[0]+.5]
+    aux_x_final=aux_x_neg+aux_x+aux_x_pos
+    plt.plot(aux_x_final,y_final)
+
+    plt.savefig("lagrange.png")
+
+
     
 print(result, " Se requirieron: ",tamaño," puntos.")
-    
-    
-
-
 
 
